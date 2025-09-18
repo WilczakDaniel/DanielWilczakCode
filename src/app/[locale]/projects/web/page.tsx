@@ -3,7 +3,7 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowLeft, Github, ExternalLink, Code2, Database, Palette, Zap, Users, Shield } from 'lucide-react'
+import { Github, ExternalLink, Code2, Database, Palette, Zap, Users, Shield } from 'lucide-react'
 
 export default function WebProjectsPage() {
   const { t, locale } = useTranslation()

@@ -20,7 +20,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/web`,
       color: 'text-blue-500',
       bgColor: 'bg-blue-50 dark:bg-blue-950/20',
-      projects: t('projects.categories.web.examples')
+      projects: t('projects.categories.web.examples').split(', ')
     },
     {
       icon: Smartphone,
@@ -29,7 +29,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/mobile`,
       color: 'text-green-500',
       bgColor: 'bg-green-50 dark:bg-green-950/20',
-      projects: t('projects.categories.mobile.examples')
+      projects: t('projects.categories.mobile.examples').split(', ')
     },
     {
       icon: Brain,
@@ -38,7 +38,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/ai`,
       color: 'text-purple-500',
       bgColor: 'bg-purple-50 dark:bg-purple-950/20',
-      projects: t('projects.categories.ai.examples')
+      projects: t('projects.categories.ai.examples').split(', ')
     }
   ]
 

@@ -2,11 +2,10 @@
 
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { ArrowLeft, Github, ExternalLink, Smartphone, Apple, Monitor, Zap, Shield, Star } from 'lucide-react'
+import { Github, ExternalLink, Smartphone, Apple, Monitor, Zap, Shield, Star } from 'lucide-react'
 
 export default function MobileProjectsPage() {
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
 
   const mobileProjects = [
     {

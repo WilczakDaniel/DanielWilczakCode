@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslation } from '@/i18n/useTranslation'
-import { Mail, MapPin, Calendar } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 export default function ContactPage() {
   const { t } = useTranslation()
@@ -16,12 +16,6 @@ export default function ContactPage() {
     },
   ]
 
-  const currentJob = {
-    title: t('contact.currentJob.title'),
-    company: t('contact.currentJob.company'),
-    period: t('contact.currentJob.period'),
-    location: t('contact.currentJob.location')
-  }
 
 
 

@@ -3,7 +3,7 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowRight, Code, Smartphone, Brain, Github, Linkedin, Mail, CheckCircle, Users, TabletSmartphone, AppWindowMac, Award, Dock } from 'lucide-react'
+import { Code, Smartphone, Brain, Github, Linkedin, Mail, CheckCircle, Users, TabletSmartphone, AppWindowMac, Award, Dock } from 'lucide-react'
 
 interface HomePageProps {
   locale: string
