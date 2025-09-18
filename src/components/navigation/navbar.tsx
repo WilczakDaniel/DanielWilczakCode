@@ -2,11 +2,8 @@
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu"
 import { useTranslation } from '@/i18n/useTranslation'
@@ -44,18 +41,14 @@ export function Navbar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-lg font-medium px-8 py-5">{t('navbar.projects')}</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-[.75fr_1fr]">
-                    <ListItem href={`/${locale}/projects/web`} title={t('web.title')}>
-                      {t('navbar.projects.web')}
-                    </ListItem>
-                    <ListItem href={`/${locale}/projects/mobile`} title={t('mobile.title')}>
-                      {t('navbar.projects.mobile')}
-                    </ListItem>
-
-                  </ul>
-                </NavigationMenuContent>
+                <Link href={`/${locale}/projects/web`} className={cn(navigationMenuTriggerStyle(), "text-lg font-medium px-8 py-5")}>
+                  Web Projects
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href={`/${locale}/projects/mobile`} className={cn(navigationMenuTriggerStyle(), "text-lg font-medium px-8 py-5")}>
+                  Mobile Projects
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href={`/${locale}/about`} className={cn(navigationMenuTriggerStyle(), "text-lg font-medium px-8 py-5")}>
@@ -94,27 +87,3 @@ export function Navbar() {
   )
 }
 
-type ListItemProps = React.ComponentPropsWithoutRef<'a'> & { href: string, title: string }
-const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(({ className, title, children, href, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          href={href}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
