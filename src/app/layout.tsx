@@ -65,7 +65,7 @@ export default function RootLayout({
           >
           <div className="min-h-screen flex flex-col">
             <Navbar />
-            <main className="container mx-auto px-4 py-8 flex-1">
+            <main className="container mx-auto px-4 pt-4 pb-8 flex-1">
               {children}
             </main>
             <Footer />
