@@ -64,15 +64,6 @@ export default function WebProjectsPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-12">
-      {/* Navigation */}
-      <div className="flex items-center gap-4">
-        <Button variant="outline" size="sm" asChild>
-          <Link href={`/${locale}/projects`} className="flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Projects
-          </Link>
-        </Button>
-      </div>
 
       {/* Header */}
       <div className="space-y-4">

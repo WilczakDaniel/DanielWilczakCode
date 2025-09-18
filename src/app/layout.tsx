@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Wilczak - Full Stack Developer",
+  title: "Daniel Wilczak Code - Full Stack Developer",
   description: "Full Stack Developer specializing in web, mobile, and AI solutions. Creating innovative applications with modern technologies.",
   icons: {
     icon: "/logo-icon.png",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     apple: "/logo-small.png",
   },
   openGraph: {
-    title: "Daniel Wilczak - Full Stack Developer",
+    title: "Daniel Wilczak Code - Full Stack Developer",
     description: "Full Stack Developer specializing in web, mobile, and AI solutions. Creating innovative applications with modern technologies.",
-    url: "https://danielwilczak.com",
+    url: "https://dwcode.pl",
     siteName: "Daniel Wilczak Code",
     images: [
       {

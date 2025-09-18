@@ -4,14 +4,14 @@ import HomePage from './home-client'
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   return {
-    title: 'Daniel Wilczak - Full Stack Developer | Web, Mobile & AI Solutions',
-    description: 'Experienced Full Stack Developer specializing in React, Next.js, mobile apps, and AI solutions. Creating innovative digital experiences that solve real-world problems.',
-    keywords: ['Full Stack Developer', 'React', 'Next.js', 'Mobile Development', 'AI Solutions', 'TypeScript', 'Web Development'],
+    title: 'Daniel Wilczak - Fullstack .NET Developer | Web & Mobile Applications',
+    description: 'Experienced Fullstack .NET Developer specializing in .NET Framework, React, Vue.js, and React Native. Creating scalable web and mobile applications with modern technologies.',
+    keywords: ['.NET Developer', 'React', 'Vue.js', 'Mobile Development', 'React Native', 'TypeScript', 'Web Development', 'C#', 'SQL Server'],
     authors: [{ name: 'Daniel Wilczak' }],
     creator: 'Daniel Wilczak',
     openGraph: {
-      title: 'Daniel Wilczak - Full Stack Developer',
-      description: 'Creating innovative web, mobile, and AI solutions with modern technologies.',
+      title: 'Daniel Wilczak - Fullstack .NET Developer',
+      description: 'Creating scalable web and mobile applications with .NET, React, and Vue.js.',
       url: `https://danielwilczak.com/${locale}`,
       siteName: 'Daniel Wilczak Portfolio',
       images: [
@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Daniel Wilczak - Full Stack Developer',
-      description: 'Creating innovative web, mobile, and AI solutions.',
+      title: 'Daniel Wilczak - Fullstack .NET Developer',
+      description: 'Creating scalable web and mobile applications with .NET and modern frameworks.',
       creator: '@danielwilczak',
       images: ['https://danielwilczak.com/og-image.jpg'],
     },

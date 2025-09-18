@@ -20,7 +20,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/web`,
       color: 'text-blue-500',
       bgColor: 'bg-blue-50 dark:bg-blue-950/20',
-      projects: ['Portfolio Website', 'E-commerce Platform', 'Task Management App']
+      projects: t('projects.categories.web.examples')
     },
     {
       icon: Smartphone,
@@ -29,7 +29,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/mobile`,
       color: 'text-green-500',
       bgColor: 'bg-green-50 dark:bg-green-950/20',
-      projects: ['Fitness Tracker', 'Social Media App', 'Weather App']
+      projects: t('projects.categories.mobile.examples')
     },
     {
       icon: Brain,
@@ -38,30 +38,30 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/ai`,
       color: 'text-purple-500',
       bgColor: 'bg-purple-50 dark:bg-purple-950/20',
-      projects: ['ChatBot Assistant', 'Image Recognition', 'Data Analytics']
+      projects: t('projects.categories.ai.examples')
     }
   ]
 
   const featuredProjects = [
     {
-      title: 'Daniel Wilczak Portfolio',
-      description: 'Modern portfolio website built with Next.js 15, TypeScript, and Tailwind CSS featuring internationalization and dark mode.',
+      title: t('projects.featured.portfolio.title'),
+      description: t('projects.featured.portfolio.desc'),
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Radix UI'],
       github: 'https://github.com/danielwilczak/portfolio',
       live: 'https://danielwilczak.com',
       image: '/projects/portfolio.png'
     },
     {
-      title: 'Task Management System',
-      description: 'Full-stack application for project and task management with real-time collaboration features.',
+      title: t('projects.featured.tasks.title'),
+      description: t('projects.featured.tasks.desc'),
       tech: ['React', 'Node.js', 'PostgreSQL', 'Socket.io'],
       github: 'https://github.com/danielwilczak/task-manager',
       live: 'https://tasks.danielwilczak.com',
       image: '/projects/task-manager.png'
     },
     {
-      title: 'AI Chat Assistant',
-      description: 'Intelligent chatbot powered by machine learning with natural language processing capabilities.',
+      title: t('projects.featured.ai.title'),
+      description: t('projects.featured.ai.desc'),
       tech: ['Python', 'TensorFlow', 'FastAPI', 'React'],
       github: 'https://github.com/danielwilczak/ai-assistant',
       live: 'https://ai.danielwilczak.com',
@@ -73,16 +73,15 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
     <div className="max-w-6xl mx-auto space-y-12">
       {/* Header */}
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">My Projects</h1>
+        <h1 className="text-4xl font-bold tracking-tight">{t('projects.title')}</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Explore my work across web development, mobile apps, and AI solutions.
-          Each project showcases different technologies and problem-solving approaches.
+          {t('projects.subtitle')}
         </p>
       </div>
 
       {/* Project Categories */}
       <section className="space-y-6">
-        <h2 className="text-3xl font-semibold text-center">Project Categories</h2>
+        <h2 className="text-3xl font-semibold text-center">{t('projects.categories.title')}</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {projectCategories.map((category) => {
             const IconComponent = category.icon
@@ -170,19 +169,6 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="text-center space-y-4 py-12">
-        <h2 className="text-2xl font-semibold">Interested in Working Together?</h2>
-        <p className="text-muted-foreground">
-          I&apos;m always open to discussing new projects and opportunities.
-        </p>
-        <Button asChild size="lg">
-          <Link href={`/${locale}/contact`}>
-            Get In Touch
-          </Link>
-        </Button>
       </section>
     </div>
   )

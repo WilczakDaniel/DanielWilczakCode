@@ -79,15 +79,6 @@ export default function MobileProjectsPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-12">
-      {/* Navigation */}
-      <div className="flex items-center gap-4">
-        <Button variant="outline" size="sm" asChild>
-          <Link href={`/${locale}/projects`} className="flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Projects
-          </Link>
-        </Button>
-      </div>
 
       {/* Header */}
       <div className="space-y-4">
@@ -245,26 +236,6 @@ export default function MobileProjectsPage() {
               Managing app store submissions, monitoring analytics, and providing ongoing updates and feature enhancements.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="text-center space-y-4 py-8">
-        <h2 className="text-2xl font-semibold">Ready to Build Your Mobile App?</h2>
-        <p className="text-muted-foreground">
-          Let&apos;s create an amazing mobile experience for your users.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Button asChild>
-            <Link href={`/${locale}/contact`}>
-              Start Your Project
-            </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href={`/${locale}/projects`}>
-              View All Projects
-            </Link>
-          </Button>
         </div>
       </section>
     </div>
