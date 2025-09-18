@@ -77,35 +77,35 @@ export default function MobileProjectsPage() {
   ]
 
   return (
-    <div className="max-w-6xl mx-auto space-y-12">
+    <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
 
       {/* Header */}
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">{t('mobile.title')}</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl">
+      <div className="space-y-3 sm:space-y-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">{t('mobile.title')}</h1>
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl">
           {t('mobile.iosAndroidDesc')} Here are some of my mobile applications
           that focus on user experience and performance across iOS and Android platforms.
         </p>
       </div>
 
       {/* Achievements */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         {achievements.map((achievement) => (
           <div key={achievement.label} className="text-center space-y-2">
-            <div className="text-3xl font-bold text-primary">{achievement.metric}</div>
-            <div className="text-sm text-muted-foreground">{achievement.label}</div>
+            <div className="text-2xl sm:text-3xl font-bold text-primary">{achievement.metric}</div>
+            <div className="text-xs sm:text-sm text-muted-foreground">{achievement.label}</div>
           </div>
         ))}
       </section>
 
       {/* Skills Overview */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold">Mobile Development Skills</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="space-y-4 sm:space-y-6">
+        <h2 className="text-xl sm:text-2xl font-semibold">Mobile Development Skills</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skills.map((skill) => {
             const IconComponent = skill.icon
             return (
-              <div key={skill.name} className="p-4 border rounded-lg space-y-3">
+              <div key={skill.name} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
                 <div className="flex items-center gap-3">
                   <IconComponent className="h-5 w-5 text-primary" />
                   <h3 className="font-medium">{skill.name}</h3>

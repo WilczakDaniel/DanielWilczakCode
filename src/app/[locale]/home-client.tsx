@@ -101,40 +101,40 @@ export default function HomePage({ locale }: HomePageProps) {
       />
       <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-32">
+        <section className="relative py-12 sm:py-20 lg:py-32">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl" />
-          <div className="relative max-w-6xl mx-auto text-center space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+          <div className="relative max-w-6xl mx-auto text-center space-y-6 sm:space-y-8">
+            <div className="space-y-3 sm:space-y-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
                 {t('home.hero.greeting')} <span className="text-primary">{t('home.hero.name')}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {t('home.hero.subtitle')}
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href={`/${locale}/projects/web`} className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Button size="lg" asChild className="w-full sm:w-auto">
+                <Link href={`/${locale}/projects/web`} className="flex items-center justify-center gap-2">
                   {t('home.hero.cta.web')}
                   <Dock className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" asChild>
-                <Link href={`/${locale}/projects/mobile`} className="flex items-center gap-2">
+              <Button size="lg" asChild className="w-full sm:w-auto">
+                <Link href={`/${locale}/projects/mobile`} className="flex items-center justify-center gap-2">
                   {t('home.hero.cta.mobile')}
                   <TabletSmartphone className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href={`/${locale}/contact`} className="flex items-center gap-2">
+              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
+                <Link href={`/${locale}/contact`} className="flex items-center justify-center gap-2">
                   <Mail className="h-4 w-4" />
                   {t('home.hero.cta.contact')}
                 </Link>
               </Button>
             </div>
 
-            <div className="flex justify-center gap-6 pt-8">
+            <div className="flex justify-center gap-4 sm:gap-6 pt-6 sm:pt-8">
               <a
                 href="https://github.com/WilczakDaniel"
                 target="_blank"
@@ -163,17 +163,17 @@ export default function HomePage({ locale }: HomePageProps) {
 
         {/* Achievements */}
         <section>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {achievements.map((achievement) => {
               const IconComponent = achievement.icon
               return (
-                <div key={achievement.label} className="text-center space-y-3">
-                  <div className="inline-flex p-3 rounded-full bg-primary/10 text-primary">
-                    <IconComponent className="h-6 w-6" />
+                <div key={achievement.label} className="text-center space-y-2 sm:space-y-3">
+                  <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
+                    <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div className="space-y-1">
-                    <div className="text-3xl font-bold">{achievement.metric}</div>
-                    <div className="text-sm text-muted-foreground">{achievement.label}</div>
+                    <div className="text-2xl sm:text-3xl font-bold">{achievement.metric}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">{achievement.label}</div>
                   </div>
                 </div>
               )
@@ -182,24 +182,24 @@ export default function HomePage({ locale }: HomePageProps) {
         </section>
 
         {/* Skills Section */}
-        <section className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold">{t('home.skills.title')}</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <section className="space-y-8 sm:space-y-12">
+          <div className="text-center space-y-3 sm:space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-bold">{t('home.skills.title')}</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               {t('home.skills.subtitle')}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {skills.map((skill) => {
               const IconComponent = skill.icon
               return (
-                <div key={skill.title} className="p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-4">
-                  <div className="inline-flex p-3 rounded-lg bg-primary/10 text-primary">
-                    <IconComponent className="h-6 w-6" />
+                <div key={skill.title} className="p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4">
+                  <div className="inline-flex p-2 sm:p-3 rounded-lg bg-primary/10 text-primary">
+                    <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold">{skill.title}</h3>
-                  <p className="text-muted-foreground">{skill.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold">{skill.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">{skill.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {skill.technologies.map((tech) => (
                       <span
@@ -217,21 +217,21 @@ export default function HomePage({ locale }: HomePageProps) {
         </section>
 
         {/* Featured Projects */}
-        <section className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold">{t('home.projects.title')}</h2>
-            <p className="text-xl text-muted-foreground">
+        <section className="space-y-8 sm:space-y-12">
+          <div className="text-center space-y-3 sm:space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-bold">{t('home.projects.title')}</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground">
               {t('home.projects.subtitle')}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredProjects.map((project) => (
-              <div key={project.title} className="p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-4">
+              <div key={project.title} className="p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4">
                 <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <Code className="h-12 w-12 text-muted-foreground" />
+                  <Code className="h-8 w-8 sm:h-12 sm:w-12 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <h3 className="text-base sm:text-lg font-semibold">{project.title}</h3>
                 <p className="text-muted-foreground text-sm">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
