@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://danielwilczak.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
