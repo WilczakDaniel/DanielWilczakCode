@@ -19,8 +19,12 @@ export const metadata: Metadata = {
   title: "Daniel Wilczak Code - Full Stack Developer",
   description: "Full Stack Developer specializing in web, mobile, and AI solutions. Creating innovative applications with modern technologies.",
   icons: {
-    icon: "/logo-icon.png",
-    shortcut: "/logo-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/DWC.svg", type: "image/svg+xml" },
+      { url: "/logo-icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
     apple: "/logo-small.png",
   },
   openGraph: {
@@ -33,7 +37,7 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Daniel Wilczak Code",
+        alt: "Daniel Wilczak Code - DWC",
       },
     ],
     locale: "en_US",
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daniel Wilczak - Full Stack Developer",
+    title: "Daniel Wilczak Code - Full Stack Developer",
     description: "Full Stack Developer specializing in web, mobile, and AI solutions. Creating innovative applications with modern technologies.",
     images: ["/logo.png"],
   },
