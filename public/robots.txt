@@ -1,11 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# Disallow admin or private areas (if any)
-# Disallow: /admin/
+# Disallow private paths
+Disallow: /api/
+Disallow: /_next/
 
 # Sitemap location
-Sitemap: https://danielwilczak.com/sitemap.xml
-
-# Crawl delay (optional)
-Crawl-delay: 1
+Sitemap: https://dwcode.pl/sitemap.xml

@@ -1,0 +1,27 @@
+{
+  "name": "Daniel Wilczak Code - Fullstack .NET Developer",
+  "short_name": "DWC Portfolio",
+  "description": "Professional portfolio of Daniel Wilczak - Fullstack .NET Developer with 3 years of experience",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#04162b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
