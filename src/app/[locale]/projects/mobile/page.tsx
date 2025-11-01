@@ -2,78 +2,33 @@
 
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
-import { Github, ExternalLink, Smartphone, Apple, Monitor, Zap, Shield, Star } from 'lucide-react'
+import { ProjectImage } from '@/components/ui/project-image'
+import { ExternalLink, Smartphone, Monitor, Zap, Shield, Star } from 'lucide-react'
 
 export default function MobileProjectsPage() {
   const { t } = useTranslation()
 
   const mobileProjects = [
     {
-      title: 'Fitness Tracker Pro',
-      description: 'Cross-platform fitness application with workout tracking, nutrition monitoring, and social features.',
-      longDescription: 'A comprehensive fitness application built with React Native. Features include workout planning, exercise tracking, nutrition logging, progress analytics, social challenges, and integration with wearable devices.',
-      tech: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'Redux Toolkit', 'React Navigation'],
-      features: ['Workout Tracking', 'Nutrition Logging', 'Progress Analytics', 'Social Challenges', 'Wearable Integration', 'Offline Support'],
-      github: 'https://github.com/danielwilczak/fitness-tracker-pro',
-      live: 'https://apps.apple.com/app/fitness-tracker-pro',
-      status: 'Completed',
-      category: 'Cross-Platform',
+      title: t('mobile.projects.pomoBeat.title'),
+      description: t('mobile.projects.pomoBeat.description'),
+      longDescription: t('mobile.projects.pomoBeat.longDescription'),
+      tech: ['React Native', 'Expo', 'TypeScript', 'AsyncStorage', 'React Navigation', 'Notifications'],
+      features: ['Pomodoro Timer', 'Work/Break Intervals', 'Progress Tracking', 'Productivity Stats', 'Customizable Settings', 'Sound Notifications'],
+      live: 'https://www.pomobeat.com',
+      status: t('mobile.projects.pomoBeat.status'),
+      category: t('mobile.projects.pomoBeat.category'),
       platform: 'iOS & Android',
-      rating: 4.8
-    },
-    {
-      title: 'Weather Forecast iOS',
-      description: 'Beautiful native iOS weather app with detailed forecasts, radar maps, and weather alerts.',
-      longDescription: 'A native iOS weather application built with SwiftUI. Features beautiful animations, detailed weather forecasts, interactive radar maps, severe weather alerts, and location-based notifications.',
-      tech: ['Swift', 'SwiftUI', 'Core Location', 'MapKit', 'Core Data', 'WeatherKit'],
-      features: ['Live Weather Data', 'Interactive Maps', 'Weather Alerts', 'Multiple Locations', 'Widget Support', 'Apple Watch App'],
-      github: 'https://github.com/danielwilczak/weather-ios',
-      live: 'https://apps.apple.com/app/weather-forecast-ios',
-      status: 'Completed',
-      category: 'Native iOS',
-      platform: 'iOS',
-      rating: 4.6
-    },
-    {
-      title: 'Task Manager Android',
-      description: 'Native Android productivity app with Material Design 3 and advanced task management features.',
-      longDescription: 'A native Android task management application built with Jetpack Compose. Features project organization, task prioritization, collaboration tools, and seamless synchronization across devices.',
-      tech: ['Kotlin', 'Jetpack Compose', 'Room Database', 'Hilt', 'Coroutines', 'Material 3'],
-      features: ['Project Management', 'Task Prioritization', 'Team Collaboration', 'Offline Sync', 'Material Design 3', 'Widgets'],
-      github: 'https://github.com/danielwilczak/task-manager-android',
-      live: 'https://play.google.com/store/apps/details?id=com.danielwilczak.taskmanager',
-      status: 'In Progress',
-      category: 'Native Android',
-      platform: 'Android',
-      rating: 4.5
-    },
-    {
-      title: 'Social Media Hub',
-      description: 'Cross-platform social networking app with real-time messaging and content sharing.',
-      longDescription: 'A social networking application built with Flutter. Features include user profiles, real-time messaging, photo/video sharing, stories, and advanced privacy controls.',
-      tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Cloud Storage', 'Push Notifications'],
-      features: ['Real-time Messaging', 'Photo/Video Sharing', 'Stories Feature', 'User Profiles', 'Privacy Controls', 'Push Notifications'],
-      github: 'https://github.com/danielwilczak/social-media-hub',
-      live: 'https://socialhub.danielwilczak.com',
-      status: 'In Progress',
-      category: 'Cross-Platform',
-      platform: 'iOS & Android',
-      rating: 4.4
+      rating: 4.7,
+      image: '/PomoBeat.png'
     }
   ]
 
   const skills = [
-    { name: 'iOS Development', icon: Apple, items: ['Swift', 'SwiftUI', 'UIKit', 'Core Data', 'CloudKit'] },
-    { name: 'Android Development', icon: Monitor, items: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Material Design'] },
-    { name: 'Cross-Platform', icon: Smartphone, items: ['React Native', 'Flutter', 'Expo', 'Ionic', 'Xamarin'] },
-    { name: 'Performance & UX', icon: Zap, items: ['Optimization', 'Animation', 'Accessibility', 'Testing', 'App Store Guidelines'] }
-  ]
-
-  const achievements = [
-    { metric: '50K+', label: 'Total Downloads' },
-    { metric: '4.6★', label: 'Average Rating' },
-    { metric: '8', label: 'Apps Published' },
-    { metric: '99%', label: 'Crash-Free Rate' }
+    { name: 'React Native', icon: Smartphone, items: ['React Native', 'Expo', 'TypeScript', 'JavaScript', 'React Navigation'] },
+    { name: 'State Management', icon: Shield, items: ['Redux', 'Context API', 'AsyncStorage', 'Realm', 'SQLite'] },
+    { name: 'Backend Integration', icon: Zap, items: ['.NET Framework', 'REST API', 'Real-time Sync', 'Firebase', 'MongoDB'] },
+    { name: 'Development Tools', icon: Monitor, items: ['Git', 'Docker', 'CI/CD', 'Testing', 'Postman'] }
   ]
 
   return (
@@ -87,16 +42,6 @@ export default function MobileProjectsPage() {
           that focus on user experience and performance across iOS and Android platforms.
         </p>
       </div>
-
-      {/* Achievements */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-        {achievements.map((achievement) => (
-          <div key={achievement.label} className="text-center space-y-2">
-            <div className="text-2xl sm:text-3xl font-bold text-primary">{achievement.metric}</div>
-            <div className="text-xs sm:text-sm text-muted-foreground">{achievement.label}</div>
-          </div>
-        ))}
-      </section>
 
       {/* Skills Overview */}
       <section className="space-y-4 sm:space-y-6">
@@ -133,8 +78,13 @@ export default function MobileProjectsPage() {
               index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
             } lg:flex`}>
               {/* Project Image */}
-              <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 flex items-center justify-center">
-                <Smartphone className="h-16 w-16 text-primary" />
+              <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 flex items-center justify-center overflow-hidden relative">
+                <ProjectImage
+                  image={project.image}
+                  title={project.title}
+                  fallbackIcon={Smartphone}
+                  className="h-16 w-16 text-primary"
+                />
               </div>
 
               {/* Project Details */}
@@ -190,13 +140,7 @@ export default function MobileProjectsPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-3 pt-4">
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4" />
-                      View Code
-                    </a>
-                  </Button>
+                <div className="pt-4">
                   <Button size="sm" asChild>
                     <a href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />

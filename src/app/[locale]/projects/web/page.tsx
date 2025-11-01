@@ -2,64 +2,43 @@
 
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
+import { ProjectImage } from '@/components/ui/project-image'
 import Link from 'next/link'
-import { Github, ExternalLink, Code2, Database, Palette, Zap, Users, Shield } from 'lucide-react'
+import { ExternalLink, Code2, Database, Palette, Zap, Users, Shield } from 'lucide-react'
 
 export default function WebProjectsPage() {
   const { t, locale } = useTranslation()
 
   const webProjects = [
     {
-      title: 'E-commerce Platform',
-      description: 'Full-stack e-commerce solution with payment processing, inventory management, and admin dashboard.',
-      longDescription: 'A comprehensive e-commerce platform built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment integration with Stripe, order management, and admin dashboard for inventory control.',
-      tech: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-      features: ['Payment Processing', 'Inventory Management', 'User Dashboard', 'Admin Panel', 'Responsive Design', 'SEO Optimized'],
-      github: 'https://github.com/danielwilczak/ecommerce-platform',
-      live: 'https://shop.danielwilczak.com',
-      status: 'Completed',
-      category: 'Full Stack'
+      title: t('web.projects.periodicTable.title'),
+      description: t('web.projects.periodicTable.description'),
+      longDescription: t('web.projects.periodicTable.longDescription'),
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      features: ['Interactive Table', 'Chemical Properties', 'Element Details', 'Responsive Design', 'Multilingual Support', 'Clean UI'],
+      live: 'https://periodic-table-zeta-henna.vercel.app/pl',
+      status: t('web.projects.periodicTable.status'),
+      category: t('web.projects.periodicTable.category'),
+      image: '/PeriodicTableOfElements.png'
     },
     {
-      title: 'Task Management Dashboard',
-      description: 'Collaborative project management tool with real-time updates and team collaboration features.',
-      longDescription: 'A comprehensive task management solution designed for teams. Includes project creation, task assignment, progress tracking, real-time notifications, and collaborative features like comments and file sharing.',
-      tech: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express', 'Material-UI'],
-      features: ['Real-time Collaboration', 'Project Management', 'Task Assignment', 'Progress Tracking', 'Team Chat', 'File Sharing'],
-      github: 'https://github.com/danielwilczak/task-dashboard',
-      live: 'https://tasks.danielwilczak.com',
-      status: 'In Progress',
-      category: 'Full Stack'
-    },
-    {
-      title: 'Personal Finance Tracker',
-      description: 'Financial management application with expense tracking, budget planning, and analytics.',
-      longDescription: 'A personal finance management tool that helps users track expenses, set budgets, and analyze spending patterns. Features include expense categorization, monthly reports, and financial goal tracking.',
-      tech: ['Vue.js', 'Nuxt.js', 'Supabase', 'Chart.js', 'Pinia', 'Vuetify'],
-      features: ['Expense Tracking', 'Budget Planning', 'Financial Analytics', 'Goal Setting', 'Data Visualization', 'Secure Authentication'],
-      github: 'https://github.com/danielwilczak/finance-tracker',
-      live: 'https://finance.danielwilczak.com',
-      status: 'Completed',
-      category: 'Frontend'
-    },
-    {
-      title: 'Real Estate Listing Platform',
-      description: 'Property listing website with advanced search, virtual tours, and agent management system.',
-      longDescription: 'A modern real estate platform connecting buyers, sellers, and agents. Features property listings with high-quality images, virtual tour integration, advanced search filters, and agent profile management.',
-      tech: ['Next.js', 'TypeScript', 'Sanity CMS', 'Mapbox', 'Cloudinary', 'Framer Motion'],
-      features: ['Property Listings', 'Virtual Tours', 'Map Integration', 'Advanced Search', 'Agent Profiles', 'Contact Management'],
-      github: 'https://github.com/danielwilczak/real-estate-platform',
-      live: 'https://realestate.danielwilczak.com',
-      status: 'Completed',
-      category: 'Full Stack'
+      title: t('web.projects.wolfPursuit.title'),
+      description: t('web.projects.wolfPursuit.description'),
+      longDescription: t('web.projects.wolfPursuit.longDescription'),
+      tech: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'React Hook Form', 'Zod'],
+      features: ['Calendar & Events', 'Focus Sessions', 'Task Management', 'Habit Tracking', 'Note Taking', 'Sleep & Finance Tracking'],
+      live: 'https://wolfpursuit.com',
+      status: t('web.projects.wolfPursuit.status'),
+      category: t('web.projects.wolfPursuit.category'),
+      image: '/WolfPursuit.png'
     }
   ]
 
   const skills = [
-    { name: 'Frontend Development', icon: Palette, items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS'] },
-    { name: 'Backend Development', icon: Database, items: ['Node.js', 'Python', 'Express', 'Django', 'PostgreSQL'] },
-    { name: 'Performance Optimization', icon: Zap, items: ['Code Splitting', 'Lazy Loading', 'SEO', 'PWA', 'Core Web Vitals'] },
-    { name: 'Collaboration', icon: Users, items: ['Git', 'Agile', 'Code Review', 'Documentation', 'Team Leadership'] }
+    { name: 'Frontend Development', icon: Palette, items: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Tailwind CSS'] },
+    { name: 'Backend Development', icon: Database, items: ['C#', 'ASP.NET', '.NET Framework', 'Entity Framework', 'REST API'] },
+    { name: 'Database & Cloud', icon: Zap, items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'Redis', 'Azure', 'Docker'] },
+    { name: 'Best Practices', icon: Users, items: ['Git', 'Agile Scrum', 'CI/CD', 'SOLID', 'DDD', 'Code Review'] }
   ]
 
   return (
@@ -109,8 +88,13 @@ export default function WebProjectsPage() {
               index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
             } lg:flex`}>
               {/* Project Image */}
-              <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-muted flex items-center justify-center">
-                <Code2 className="h-12 w-12 sm:h-16 sm:w-16 text-muted-foreground" />
+              <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-muted flex items-center justify-center overflow-hidden relative">
+                <ProjectImage
+                  image={project.image}
+                  title={project.title}
+                  fallbackIcon={Code2}
+                  className="h-12 w-12 sm:h-16 sm:w-16 text-muted-foreground"
+                />
               </div>
 
               {/* Project Details */}
@@ -155,13 +139,7 @@ export default function WebProjectsPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-3 pt-4">
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4" />
-                      View Code
-                    </a>
-                  </Button>
+                <div className="pt-4">
                   <Button size="sm" asChild>
                     <a href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />
