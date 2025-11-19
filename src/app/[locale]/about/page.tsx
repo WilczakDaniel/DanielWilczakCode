@@ -73,7 +73,6 @@ export default function AboutPage() {
 
   const personalStats = [
     { icon: Award, metric: '3+', label: t('home.achievements.experience') },
-    { icon: Users, metric: '15+', label: t('home.achievements.projects') },
     { icon: CheckCircle, metric: '3+', label: t('home.achievements.companies') },
     { icon: AppWindowMac, metric: '8+', label: t('about.stats.projects')}
   ]
@@ -132,7 +131,7 @@ export default function AboutPage() {
       </section>
 
       {/* Personal Stats */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {personalStats.map((stat) => {
           const IconComponent = stat.icon
           return (

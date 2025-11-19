@@ -3,7 +3,7 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import { ProjectImage } from '@/components/ui/project-image'
-import { ExternalLink, Smartphone, Monitor, Zap, Shield, Star } from 'lucide-react'
+import { ExternalLink, Smartphone, Monitor, Zap, Shield } from 'lucide-react'
 
 export default function MobileProjectsPage() {
   const { t } = useTranslation()
@@ -19,7 +19,7 @@ export default function MobileProjectsPage() {
       status: t('mobile.projects.pomoBeat.status'),
       category: t('mobile.projects.pomoBeat.category'),
       platform: 'iOS & Android',
-      rating: 4.7,
+      rating: 0,
       image: '/PomoBeat.png'
     }
   ]
@@ -28,7 +28,7 @@ export default function MobileProjectsPage() {
     { name: 'React Native', icon: Smartphone, items: ['React Native', 'Expo', 'TypeScript', 'JavaScript', 'React Navigation'] },
     { name: 'State Management', icon: Shield, items: ['Redux', 'Context API', 'AsyncStorage', 'Realm', 'SQLite'] },
     { name: 'Backend Integration', icon: Zap, items: ['.NET Framework', 'REST API', 'Real-time Sync', 'Firebase', 'MongoDB'] },
-    { name: 'Development Tools', icon: Monitor, items: ['Git', 'Docker', 'CI/CD', 'Testing', 'Postman'] }
+    { name: 'Development Tools', icon: Monitor, items: ['Expo CLI', 'Xcode', 'Android Studio', 'EAS Build'] }
   ]
 
   return (
@@ -97,10 +97,10 @@ export default function MobileProjectsPage() {
                   }`}>
                     {project.status}
                   </span>
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <Star className="h-3 w-3 text-yellow-500 fill-current" />
                     <span className="text-xs text-muted-foreground">{project.rating}</span>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="space-y-2">
@@ -151,34 +151,6 @@ export default function MobileProjectsPage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Development Process */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold">Mobile Development Process</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-6 border rounded-lg space-y-3">
-            <div className="text-primary font-semibold">1. Design & Prototype</div>
-            <h3 className="font-medium">User-Centric Design</h3>
-            <p className="text-sm text-muted-foreground">
-              Creating intuitive interfaces with wireframes, prototypes, and user testing to ensure optimal user experience.
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg space-y-3">
-            <div className="text-primary font-semibold">2. Development & Testing</div>
-            <h3 className="font-medium">Quality Assurance</h3>
-            <p className="text-sm text-muted-foreground">
-              Implementing features with clean code, comprehensive testing, and performance optimization for both platforms.
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg space-y-3">
-            <div className="text-primary font-semibold">3. Launch & Maintain</div>
-            <h3 className="font-medium">App Store Success</h3>
-            <p className="text-sm text-muted-foreground">
-              Managing app store submissions, monitoring analytics, and providing ongoing updates and feature enhancements.
-            </p>
-          </div>
         </div>
       </section>
     </div>

@@ -57,35 +57,6 @@ export default function ContactPage() {
             })}
           </div>
         </section>
-
-        <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12 lg:space-y-16">
-          <section className="space-y-6 sm:space-y-8">
-            {/* FAQ */}
-            <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-lg sm:text-xl font-semibold text-center">{t('contact.faq.title')}</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <div className="p-3 sm:p-4 border rounded-lg">
-                  <h4 className="font-medium mb-2 text-sm sm:text-base">{t('contact.faq.response.question')}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    {t('contact.faq.response.answer')}
-                  </p>
-                </div>
-                <div className="p-3 sm:p-4 border rounded-lg">
-                  <h4 className="font-medium mb-2 text-sm sm:text-base">{t('contact.faq.international.question')}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    {t('contact.faq.international.answer')}
-                  </p>
-                </div>
-                <div className="p-3 sm:p-4 border rounded-lg">
-                  <h4 className="font-medium mb-2 text-sm sm:text-base">{t('contact.faq.info.question')}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    {t('contact.faq.info.answer')}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
       </div>
     </div>
   )

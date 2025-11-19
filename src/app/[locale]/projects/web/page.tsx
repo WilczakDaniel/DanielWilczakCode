@@ -3,11 +3,10 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import { ProjectImage } from '@/components/ui/project-image'
-import Link from 'next/link'
 import { ExternalLink, Code2, Database, Palette, Zap, Users, Shield } from 'lucide-react'
 
 export default function WebProjectsPage() {
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
 
   const webProjects = [
     {
@@ -150,26 +149,6 @@ export default function WebProjectsPage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="text-center space-y-4 py-8">
-        <h2 className="text-2xl font-semibold">Interested in My Work?</h2>
-        <p className="text-muted-foreground">
-          Let&apos;s discuss your next web development project.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Button asChild>
-            <Link href={`/${locale}/contact`}>
-              Get In Touch
-            </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href={`/${locale}/projects`}>
-              View All Projects
-            </Link>
-          </Button>
         </div>
       </section>
     </div>

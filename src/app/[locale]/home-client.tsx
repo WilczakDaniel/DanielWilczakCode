@@ -3,7 +3,7 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { Code, Smartphone, Brain, Github, Linkedin, Mail, CheckCircle, Users, TabletSmartphone, AppWindowMac, Award, Dock } from 'lucide-react'
+import { Code, Smartphone, Brain, Github, Linkedin, Mail, CheckCircle, TabletSmartphone, AppWindowMac, Award, Dock } from 'lucide-react'
 
 interface HomePageProps {
   locale: string
@@ -35,30 +35,8 @@ export default function HomePage({ locale }: HomePageProps) {
 
   const achievements = [
     { icon: Award, metric: '3+', label: t('home.achievements.experience') },
-    { icon: Users, metric: '15+', label: t('home.achievements.projects') },
     { icon: CheckCircle, metric: '3+', label: t('home.achievements.companies') },
-    { icon: AppWindowMac, metric: '8+', label: t('about.stats.projects')}
-  ]
-
-  const featuredProjects = [
-    {
-      title: t('home.projects.web.title'),
-      description: t('home.projects.web.desc'),
-      tech: ['.NET', 'React', 'SQL Server'],
-      link: `/${locale}/projects/web`
-    },
-    {
-      title: t('home.projects.mobile.title'),
-      description: t('home.projects.mobile.desc'),
-      tech: ['React Native', 'Vue.js', 'WebSockets'],
-      link: `/${locale}/projects/mobile`
-    },
-    {
-      title: t('home.projects.management.title'),
-      description: t('home.projects.management.desc'),
-      tech: ['.NET', 'Angular', 'Entity Framework'],
-      link: `/${locale}/projects/web`
-    }
+    { icon: AppWindowMac, metric: '15+', label: t('about.stats.projects')}
   ]
 
   const jsonLd = {
@@ -163,7 +141,7 @@ export default function HomePage({ locale }: HomePageProps) {
 
         {/* Achievements */}
         <section>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {achievements.map((achievement) => {
               const IconComponent = achievement.icon
               return (
@@ -213,43 +191,6 @@ export default function HomePage({ locale }: HomePageProps) {
                 </div>
               )
             })}
-          </div>
-        </section>
-
-        {/* Featured Projects */}
-        <section className="space-y-8 sm:space-y-12">
-          <div className="text-center space-y-3 sm:space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-bold">{t('home.projects.title')}</h2>
-            <p className="text-lg sm:text-xl text-muted-foreground">
-              {t('home.projects.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {featuredProjects.map((project) => (
-              <div key={project.title} className="p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <Code className="h-8 w-8 sm:h-12 sm:w-12 text-muted-foreground" />
-                </div>
-                <h3 className="text-base sm:text-lg font-semibold">{project.title}</h3>
-                <p className="text-muted-foreground text-sm">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 text-xs bg-muted rounded-md font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <Button variant="outline" size="sm" asChild className="w-full">
-                  <Link href={project.link}>
-                    {t('home.projects.viewProject')}
-                  </Link>
-                </Button>
-              </div>
-            ))}
           </div>
         </section>
       </div>
