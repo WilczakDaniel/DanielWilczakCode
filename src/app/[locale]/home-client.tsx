@@ -23,6 +23,9 @@ export default function HomePage({ locale }: HomePageProps) {
   // Viewport animation for skills section
   const { isVisible: skillsVisible, elementRef: skillsRef } = useInViewAnimation(0.1)
 
+  // Viewport animation for achievements section
+  const { isVisible: achievementsVisible, elementRef: achievementsRef } = useInViewAnimation(0.1)
+
   const skills = [
     {
       icon: Code,
@@ -103,7 +106,7 @@ export default function HomePage({ locale }: HomePageProps) {
                 width={600}
                 height={332}
                 priority
-                className="w-auto h-48 sm:h-64 md:h-80 dark:hidden"
+                className="w-auto h-48 sm:h-64 md:h-80 dark:hidden animate-fade-in-down"
               />
               <Image
                 src="/DWCWhite.svg"
@@ -111,32 +114,32 @@ export default function HomePage({ locale }: HomePageProps) {
                 width={600}
                 height={332}
                 priority
-                className="w-auto h-48 sm:h-64 md:h-80 hidden dark:block"
+                className="w-auto h-48 sm:h-64 md:h-80 hidden dark:block animate-fade-in-down"
               />
             </div>
             <div className="space-y-1.5 sm:space-y-2">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight animate-fade-in-down animate-delay-100">
                 {t('home.hero.greeting')} <span className="text-primary">{t('home.hero.name')}</span>
               </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in-down animate-delay-200">
                 {t('home.hero.subtitle')}
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button size="lg" asChild className="w-full sm:w-auto">
+              <Button size="lg" asChild className="w-full sm:w-auto animate-fade-in-down animate-delay-300 hover-scale">
                 <Link href={`/${locale}/projects/web`} className="flex items-center justify-center gap-2">
                   {t('home.hero.cta.web')}
                   <Dock className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" asChild className="w-full sm:w-auto">
+              <Button size="lg" asChild className="w-full sm:w-auto animate-fade-in-down animate-delay-400 hover-scale">
                 <Link href={`/${locale}/projects/mobile`} className="flex items-center justify-center gap-2">
                   {t('home.hero.cta.mobile')}
                   <TabletSmartphone className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto animate-fade-in-down animate-delay-400 hover-scale">
                 <Link href={`/${locale}/contact`} className="flex items-center justify-center gap-2">
                   <Mail className="h-4 w-4" />
                   {t('home.hero.cta.contact')}
@@ -149,7 +152,7 @@ export default function HomePage({ locale }: HomePageProps) {
                 href="https://github.com/WilczakDaniel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
+                className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors animate-fade-in-down animate-delay-500 hover-lift"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -157,13 +160,13 @@ export default function HomePage({ locale }: HomePageProps) {
                 href="https://linkedin.com/in/daniel-wilczak"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
+                className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors animate-fade-in-down animate-delay-600 hover-lift"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="mailto:dwilczakcode@gmail.com"
-                className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
+                className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors animate-fade-in-down animate-delay-700 hover-lift"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -172,13 +175,14 @@ export default function HomePage({ locale }: HomePageProps) {
         </section>
 
         {/* Achievements */}
-        <section>
+        <section ref={achievementsRef}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon
               const counter = index === 0 ? counter1 : index === 1 ? counter2 : counter3
+              const delayClass = index === 0 ? '' : index === 1 ? 'animate-delay-200' : 'animate-delay-400'
               return (
-                <div key={String(achievement.label)} ref={counter.elementRef} className="text-center space-y-2 sm:space-y-3">
+                <div key={String(achievement.label)} ref={counter.elementRef} className={`text-center space-y-2 sm:space-y-3 ${achievementsVisible ? `animate-fade-in-down ${delayClass}` : 'opacity-0'}`}>
                   <div className={`inline-flex p-2 sm:p-3 rounded-full bg-muted ${achievement.iconColor}`}>
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
