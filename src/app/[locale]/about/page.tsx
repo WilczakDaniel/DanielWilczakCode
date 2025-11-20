@@ -51,12 +51,12 @@ export default function AboutPage() {
     {
       category: t('about.skills.backend'),
       icon: Zap,
-      items: ['.NET Framework', 'C#', 'MVC', 'Entity Framework', 'SQL Server', 'REST API', 'Razor', 'Dapper']
+      items: ['.NET Framework', 'C#', 'ASP.NET Core', 'Entity Framework', 'SQL Server', 'REST API', 'Dapper']
     },
     {
       category: t('about.skills.frontend'),
       icon: Code,
-      items: ['React', 'Vue.js', 'Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap']
+      items: ['React', 'Vue.js', 'Angular', 'TypeScript', 'JavaScript', 'Next.js', 'CSS3', 'Tailwind CSS']
     },
     {
       category: t('about.skills.mobile'),
@@ -120,7 +120,7 @@ export default function AboutPage() {
                   </a>
                 </Button>
                 <Button size="sm" variant="outline" asChild className="h-8 w-8 p-0">
-                  <a href="mailto:danielmarekwilczak@gmail.com">
+                  <a href="mailto:dwilczakcode@gmail.com">
                     <Mail className="h-3 w-3" />
                   </a>
                 </Button>
@@ -135,7 +135,7 @@ export default function AboutPage() {
         {personalStats.map((stat) => {
           const IconComponent = stat.icon
           return (
-            <div key={stat.label} className="text-center space-y-2 sm:space-y-3">
+            <div key={String(stat.label)} className="text-center space-y-2 sm:space-y-3">
               <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
                 <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
           {skills.map((skillGroup) => {
             const IconComponent = skillGroup.icon
             return (
-              <div key={skillGroup.category} className="p-4 sm:p-6 border rounded-lg space-y-3 sm:space-y-4">
+              <div key={String(skillGroup.category)} className="p-4 sm:p-6 border rounded-lg space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   <h3 className="font-semibold text-sm sm:text-base">{skillGroup.category}</h3>

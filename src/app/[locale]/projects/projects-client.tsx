@@ -20,7 +20,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/web`,
       color: 'text-blue-500',
       bgColor: 'bg-blue-50 dark:bg-blue-950/20',
-      projects: t('projects.categories.web.examples').split(', ')
+      projects: String(t('projects.categories.web.examples')).split(', ')
     },
     {
       icon: Smartphone,
@@ -29,7 +29,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/mobile`,
       color: 'text-green-500',
       bgColor: 'bg-green-50 dark:bg-green-950/20',
-      projects: t('projects.categories.mobile.examples').split(', ')
+      projects: String(t('projects.categories.mobile.examples')).split(', ')
     },
     {
       icon: Brain,
@@ -38,7 +38,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
       href: `/${locale}/projects/ai`,
       color: 'text-purple-500',
       bgColor: 'bg-purple-50 dark:bg-purple-950/20',
-      projects: t('projects.categories.ai.examples').split(', ')
+      projects: String(t('projects.categories.ai.examples')).split(', ')
     }
   ]
 
@@ -87,7 +87,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
             const IconComponent = category.icon
             return (
               <div
-                key={category.title}
+                key={String(category.title)}
                 className={`p-6 rounded-lg border transition-all hover:shadow-lg ${category.bgColor}`}
               >
                 <div className="space-y-4">
@@ -131,7 +131,7 @@ export default function ProjectsClient({ locale }: ProjectsClientProps) {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {featuredProjects.map((project) => (
-            <div key={project.title} className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+            <div key={String(project.title)} className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
               <div className="aspect-video bg-muted flex items-center justify-center">
                 <Code className="h-16 w-16 text-muted-foreground" />
               </div>

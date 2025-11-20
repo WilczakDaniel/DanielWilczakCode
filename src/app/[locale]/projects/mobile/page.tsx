@@ -14,7 +14,7 @@ export default function MobileProjectsPage() {
       description: t('mobile.projects.pomoBeat.description'),
       longDescription: t('mobile.projects.pomoBeat.longDescription'),
       tech: ['React Native', 'Expo', 'TypeScript', 'AsyncStorage', 'React Navigation', 'Notifications'],
-      features: ['Pomodoro Timer', 'Work/Break Intervals', 'Progress Tracking', 'Productivity Stats', 'Customizable Settings', 'Sound Notifications'],
+      features: t('mobile.projects.pomoBeat.features') as unknown as string[],
       live: 'https://www.pomobeat.com',
       status: t('mobile.projects.pomoBeat.status'),
       category: t('mobile.projects.pomoBeat.category'),
@@ -25,10 +25,10 @@ export default function MobileProjectsPage() {
   ]
 
   const skills = [
-    { name: 'React Native', icon: Smartphone, items: ['React Native', 'Expo', 'TypeScript', 'JavaScript', 'React Navigation'] },
-    { name: 'State Management', icon: Shield, items: ['Redux', 'Context API', 'AsyncStorage', 'Realm', 'SQLite'] },
-    { name: 'Backend Integration', icon: Zap, items: ['.NET Framework', 'REST API', 'Real-time Sync', 'Firebase', 'MongoDB'] },
-    { name: 'Development Tools', icon: Monitor, items: ['Expo CLI', 'Xcode', 'Android Studio', 'EAS Build'] }
+    { name: t('mobile.skills.reactNative'), icon: Smartphone, items: ['React Native', 'Expo', 'TypeScript', 'JavaScript', 'React Navigation'] },
+    { name: t('mobile.skills.stateManagement'), icon: Shield, items: ['Redux', 'Context API', 'AsyncStorage', 'Realm', 'SQLite'] },
+    { name: t('mobile.skills.backendIntegration'), icon: Zap, items: ['.NET Framework', 'REST API', 'Real-time Sync', 'Firebase', 'MongoDB'] },
+    { name: t('mobile.skills.devTools'), icon: Monitor, items: ['Expo CLI', 'Xcode', 'Android Studio', 'EAS Build'] }
   ]
 
   return (
@@ -38,19 +38,18 @@ export default function MobileProjectsPage() {
       <div className="space-y-3 sm:space-y-4">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">{t('mobile.title')}</h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl">
-          {t('mobile.iosAndroidDesc')} Here are some of my mobile applications
-          that focus on user experience and performance across iOS and Android platforms.
+          {t('mobile.iosAndroidDesc')} {t('mobile.projectsIntro')}
         </p>
       </div>
 
       {/* Skills Overview */}
       <section className="space-y-4 sm:space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold">Mobile Development Skills</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold">{t('mobile.skillsTitle')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skills.map((skill) => {
             const IconComponent = skill.icon
             return (
-              <div key={skill.name} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
+              <div key={String(skill.name)} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
                 <div className="flex items-center gap-3">
                   <IconComponent className="h-5 w-5 text-primary" />
                   <h3 className="font-medium">{skill.name}</h3>
@@ -71,17 +70,17 @@ export default function MobileProjectsPage() {
 
       {/* Projects Grid */}
       <section className="space-y-8">
-        <h2 className="text-2xl font-semibold">Mobile Applications</h2>
+        <h2 className="text-2xl font-semibold">{t('mobile.applicationsTitle')}</h2>
         <div className="space-y-8">
           {mobileProjects.map((project, index) => (
-            <div key={project.title} className={`border rounded-lg overflow-hidden hover:shadow-lg transition-all ${
+            <div key={String(project.title)} className={`border rounded-lg overflow-hidden hover:shadow-lg transition-all ${
               index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
             } lg:flex`}>
               {/* Project Image */}
               <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 flex items-center justify-center overflow-hidden relative">
                 <ProjectImage
                   image={project.image}
-                  title={project.title}
+                  title={String(project.title)}
                   fallbackIcon={Smartphone}
                   className="h-16 w-16 text-primary"
                 />
@@ -115,7 +114,7 @@ export default function MobileProjectsPage() {
                 <p className="text-muted-foreground">{project.longDescription}</p>
 
                 <div className="space-y-3">
-                  <h4 className="font-medium text-sm">Key Features:</h4>
+                  <h4 className="font-medium text-sm">{t('mobile.keyFeatures')}</h4>
                   <div className="grid grid-cols-2 gap-2">
                     {project.features.map((feature) => (
                       <div key={feature} className="flex items-center gap-2 text-sm">
@@ -127,7 +126,7 @@ export default function MobileProjectsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="font-medium text-sm">Technologies:</h4>
+                  <h4 className="font-medium text-sm">{t('mobile.technologies')}</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
@@ -144,7 +143,7 @@ export default function MobileProjectsPage() {
                   <Button size="sm" asChild>
                     <a href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />
-                      {project.platform === 'iOS' ? 'App Store' : project.platform === 'Android' ? 'Play Store' : 'Download'}
+                      {project.platform === 'iOS' ? 'App Store' : project.platform === 'Android' ? 'Play Store' : t('mobile.download')}
                     </a>
                   </Button>
                 </div>

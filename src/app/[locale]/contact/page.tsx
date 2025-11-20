@@ -11,8 +11,8 @@ export default function ContactPage() {
       icon: Mail,
       title: t('contact.methods.email'),
       description: t('contact.methods.email.desc'),
-      value: 'danielmarekwilczak@gmail.com',
-      href: 'mailto:danielmarekwilczak@gmail.com'
+      value: 'dwilczakcode@gmail.com',
+      href: 'mailto:dwilczakcode@gmail.com'
     },
   ]
 
@@ -34,7 +34,7 @@ export default function ContactPage() {
             {contactMethods.map((method) => {
               const IconComponent = method.icon
               return (
-                <div key={method.title} className="p-4 sm:p-6 border rounded-lg text-center space-y-3 sm:space-y-4 hover:shadow-lg transition-shadow">
+                <div key={String(method.title)} className="p-4 sm:p-6 border rounded-lg text-center space-y-3 sm:space-y-4 hover:shadow-lg transition-shadow">
                   <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>

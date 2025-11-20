@@ -14,7 +14,7 @@ export default function WebProjectsPage() {
       description: t('web.projects.periodicTable.description'),
       longDescription: t('web.projects.periodicTable.longDescription'),
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-      features: ['Interactive Table', 'Chemical Properties', 'Element Details', 'Responsive Design', 'Multilingual Support', 'Clean UI'],
+      features: t('web.projects.periodicTable.features') as unknown as string[],
       live: 'https://periodic-table-zeta-henna.vercel.app/pl',
       status: t('web.projects.periodicTable.status'),
       category: t('web.projects.periodicTable.category'),
@@ -25,7 +25,7 @@ export default function WebProjectsPage() {
       description: t('web.projects.wolfPursuit.description'),
       longDescription: t('web.projects.wolfPursuit.longDescription'),
       tech: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'React Hook Form', 'Zod'],
-      features: ['Calendar & Events', 'Focus Sessions', 'Task Management', 'Habit Tracking', 'Note Taking', 'Sleep & Finance Tracking'],
+      features: t('web.projects.wolfPursuit.features') as unknown as string[],
       live: 'https://wolfpursuit.com',
       status: t('web.projects.wolfPursuit.status'),
       category: t('web.projects.wolfPursuit.category'),
@@ -34,10 +34,10 @@ export default function WebProjectsPage() {
   ]
 
   const skills = [
-    { name: 'Frontend Development', icon: Palette, items: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Tailwind CSS'] },
-    { name: 'Backend Development', icon: Database, items: ['C#', 'ASP.NET', '.NET Framework', 'Entity Framework', 'REST API'] },
-    { name: 'Database & Cloud', icon: Zap, items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'Redis', 'Azure', 'Docker'] },
-    { name: 'Best Practices', icon: Users, items: ['Git', 'Agile Scrum', 'CI/CD', 'SOLID', 'DDD', 'Code Review'] }
+    { name: t('web.skills.frontend'), icon: Palette, items: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Tailwind CSS'] },
+    { name: t('web.skills.backend'), icon: Database, items: ['C#', 'ASP.NET', '.NET Framework', 'Entity Framework', 'REST API'] },
+    { name: t('web.skills.database'), icon: Zap, items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'Redis', 'Azure', 'Docker'] },
+    { name: t('web.skills.practices'), icon: Users, items: ['Git', 'Agile Scrum', 'CI/CD', 'SOLID', 'DDD', 'Code Review'] }
   ]
 
   return (
@@ -47,19 +47,18 @@ export default function WebProjectsPage() {
       <div className="space-y-3 sm:space-y-4">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">{t('web.title')}</h1>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl">
-          {t('web.modernDesc')} Here are some of my recent web development projects
-          showcasing modern technologies and best practices.
+          {t('web.modernDesc')} {t('web.projectsIntro')}
         </p>
       </div>
 
       {/* Skills Overview */}
       <section className="space-y-4 sm:space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold">Skills & Technologies</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold">{t('web.skillsTitle')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skills.map((skill) => {
             const IconComponent = skill.icon
             return (
-              <div key={skill.name} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
+              <div key={String(skill.name)} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   <h3 className="font-medium text-sm sm:text-base">{skill.name}</h3>
@@ -80,17 +79,17 @@ export default function WebProjectsPage() {
 
       {/* Projects Grid */}
       <section className="space-y-6 sm:space-y-8">
-        <h2 className="text-xl sm:text-2xl font-semibold">Recent Projects</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold">{t('web.recentProjectsTitle')}</h2>
         <div className="space-y-6 sm:space-y-8">
           {webProjects.map((project, index) => (
-            <div key={project.title} className={`border rounded-lg overflow-hidden hover:shadow-lg transition-all ${
+            <div key={String(project.title)} className={`border rounded-lg overflow-hidden hover:shadow-lg transition-all ${
               index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
             } lg:flex`}>
               {/* Project Image */}
               <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-muted flex items-center justify-center overflow-hidden relative">
                 <ProjectImage
                   image={project.image}
-                  title={project.title}
+                  title={String(project.title)}
                   fallbackIcon={Code2}
                   className="h-12 w-12 sm:h-16 sm:w-16 text-muted-foreground"
                 />
@@ -113,7 +112,7 @@ export default function WebProjectsPage() {
                 <p className="text-sm sm:text-base text-muted-foreground">{project.longDescription}</p>
 
                 <div className="space-y-2 sm:space-y-3">
-                  <h4 className="font-medium text-sm">Key Features:</h4>
+                  <h4 className="font-medium text-sm">{t('web.keyFeatures')}</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {project.features.map((feature) => (
                       <div key={feature} className="flex items-center gap-2 text-xs sm:text-sm">
@@ -125,7 +124,7 @@ export default function WebProjectsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="font-medium text-sm">Technologies:</h4>
+                  <h4 className="font-medium text-sm">{t('web.technologies')}</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
@@ -142,7 +141,7 @@ export default function WebProjectsPage() {
                   <Button size="sm" asChild>
                     <a href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />
-                      Live Demo
+                      {t('web.liveDemo')}
                     </a>
                   </Button>
                 </div>

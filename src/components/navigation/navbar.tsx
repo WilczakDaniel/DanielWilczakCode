@@ -9,6 +9,7 @@ import {
 import { useTranslation } from '@/i18n/useTranslation'
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname, useRouter } from 'next/navigation'
 import * as React from "react"
 import { ModeToggle } from "../theme/ModeToggle"
@@ -36,8 +37,8 @@ export function Navbar() {
 
   const navigationItems = [
     { href: `/${locale}/`, label: t('navbar.home') },
-    { href: `/${locale}/projects/web`, label: 'Web Projects' },
-    { href: `/${locale}/projects/mobile`, label: 'Mobile Projects' },
+    { href: `/${locale}/projects/web`, label: t('navbar.webProjects') },
+    { href: `/${locale}/projects/mobile`, label: t('navbar.mobileProjects') },
     { href: `/${locale}/about`, label: t('navbar.about') },
     { href: `/${locale}/contact`, label: t('navbar.contact') },
   ]
@@ -48,8 +49,23 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo/Brand - Left Side */}
           <div className="flex items-center">
-            <Link href={`/${locale}/`} className="font-bold text-xl text-primary">
-              DWC
+            <Link href={`/${locale}/`} className="flex items-center">
+              <Image
+                src="/DWCBlack.svg"
+                alt="DWC Logo"
+                width={100}
+                height={55}
+                priority
+                className="w-auto h-8 md:h-10 dark:hidden"
+              />
+              <Image
+                src="/DWCWhite.svg"
+                alt="DWC Logo"
+                width={100}
+                height={55}
+                priority
+                className="w-auto h-8 md:h-10 hidden dark:block"
+              />
             </Link>
           </div>
 

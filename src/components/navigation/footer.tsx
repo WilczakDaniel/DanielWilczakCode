@@ -47,13 +47,19 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1 space-y-3 sm:space-y-4">
             <div className="flex items-center gap-3">
               <Image
-                src="/logo-icon.png"
+                src="/DWCBlack.svg"
                 alt="DWC Logo"
-                width={32}
-                height={32}
-                className="w-7 h-7 sm:w-8 sm:h-8"
+                width={80}
+                height={44}
+                className="w-auto h-7 sm:h-8 dark:hidden"
               />
-              <span className="font-bold text-base sm:text-lg">Daniel Wilczak</span>
+              <Image
+                src="/DWCWhite.svg"
+                alt="DWC Logo"
+                width={80}
+                height={44}
+                className="w-auto h-7 sm:h-8 hidden dark:block"
+              />
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
               {t('footer.description')}
@@ -82,7 +88,7 @@ export function Footer() {
             <h3 className="font-semibold text-sm sm:text-base">{t('footer.navigation')}</h3>
             <ul className="space-y-2">
               {navigation.main.map((item) => (
-                <li key={item.name}>
+                <li key={String(item.name)}>
                   <Link
                     href={item.href}
                     className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"
@@ -99,7 +105,7 @@ export function Footer() {
             <h3 className="font-semibold text-sm sm:text-base">{t('footer.projects')}</h3>
             <ul className="space-y-2">
               {navigation.projects.map((item) => (
-                <li key={item.name}>
+                <li key={String(item.name)}>
                   <Link
                     href={item.href}
                     className="text-sm sm:text-base text-muted-foreground hover:text-primary transition-colors"

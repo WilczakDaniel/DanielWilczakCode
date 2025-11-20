@@ -4,7 +4,7 @@ import { ValidLocale } from './config'
 import en from './locales/en.json'
 import pl from './locales/pl.json'
 
-const translations: Record<ValidLocale, Record<string, string>> = {
+const translations: Record<ValidLocale, Record<string, string | string[]>> = {
   en,
   pl,
 }

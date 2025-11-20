@@ -3,6 +3,7 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Code, Smartphone, Brain, Github, Linkedin, Mail, CheckCircle, TabletSmartphone, AppWindowMac, Award, Dock } from 'lucide-react'
 
 interface HomePageProps {
@@ -47,7 +48,7 @@ export default function HomePage({ locale }: HomePageProps) {
     description: 'Fullstack .NET Developer with experience in web and mobile application development, specializing in .NET Framework, React, and Vue.js.',
     url: `https://danielwilczak.com/${locale}`,
     image: 'https://danielwilczak.com/daniel-wilczak.jpg',
-    email: 'danielmarekwilczak@gmail.com',
+    email: 'dwilczakcode@gmail.com',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Cracow',
@@ -81,8 +82,26 @@ export default function HomePage({ locale }: HomePageProps) {
         {/* Hero Section */}
         <section className="relative py-12 sm:py-20 lg:py-32">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl" />
-          <div className="relative max-w-6xl mx-auto text-center space-y-6 sm:space-y-8">
-            <div className="space-y-3 sm:space-y-4">
+          <div className="relative max-w-6xl mx-auto text-center space-y-1 sm:space-y-1">
+            <div className="flex justify-center mb-3 sm:mb-4">
+              <Image
+                src="/DWCBlack.svg"
+                alt="DWC Logo"
+                width={600}
+                height={332}
+                priority
+                className="w-auto h-48 sm:h-64 md:h-80 dark:hidden"
+              />
+              <Image
+                src="/DWCWhite.svg"
+                alt="DWC Logo"
+                width={600}
+                height={332}
+                priority
+                className="w-auto h-48 sm:h-64 md:h-80 hidden dark:block"
+              />
+            </div>
+            <div className="space-y-1.5 sm:space-y-2">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
                 {t('home.hero.greeting')} <span className="text-primary">{t('home.hero.name')}</span>
               </h1>
@@ -130,7 +149,7 @@ export default function HomePage({ locale }: HomePageProps) {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:danielmarekwilczak@gmail.com"
+                href="mailto:dwilczakcode@gmail.com"
                 className="p-3 rounded-full bg-muted hover:bg-muted/80 transition-colors"
               >
                 <Mail className="h-5 w-5" />
@@ -145,7 +164,7 @@ export default function HomePage({ locale }: HomePageProps) {
             {achievements.map((achievement) => {
               const IconComponent = achievement.icon
               return (
-                <div key={achievement.label} className="text-center space-y-2 sm:space-y-3">
+                <div key={String(achievement.label)} className="text-center space-y-2 sm:space-y-3">
                   <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
@@ -172,7 +191,7 @@ export default function HomePage({ locale }: HomePageProps) {
             {skills.map((skill) => {
               const IconComponent = skill.icon
               return (
-                <div key={skill.title} className="p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4">
+                <div key={String(skill.title)} className="p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4">
                   <div className="inline-flex p-2 sm:p-3 rounded-lg bg-primary/10 text-primary">
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
@@ -181,7 +200,7 @@ export default function HomePage({ locale }: HomePageProps) {
                   <div className="flex flex-wrap gap-2">
                     {skill.technologies.map((tech) => (
                       <span
-                        key={tech}
+                        key={String(tech)}
                         className="px-2 py-1 text-xs bg-muted rounded-md font-medium"
                       >
                         {tech}
