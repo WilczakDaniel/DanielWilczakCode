@@ -4,9 +4,16 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import { ProjectImage } from '@/components/ui/project-image'
 import { ExternalLink, Code2, Database, Palette, Zap, Users, Shield } from 'lucide-react'
+import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 
 export default function WebProjectsPage() {
   const { t } = useTranslation()
+
+  // Viewport animation for skills section
+  const { isVisible: skillsVisible, elementRef: skillsRef } = useInViewAnimation(0.1)
+
+  // Viewport animation for projects section
+  const { isVisible: projectsVisible, elementRef: projectsRef } = useInViewAnimation(0.1)
 
   const webProjects = [
     {
@@ -52,15 +59,19 @@ export default function WebProjectsPage() {
       </div>
 
       {/* Skills Overview */}
-      <section className="space-y-4 sm:space-y-6">
+      <section className="space-y-4 sm:space-y-6" ref={skillsRef}>
         <h2 className="text-xl sm:text-2xl font-semibold">{t('web.skillsTitle')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {skills.map((skill) => {
+          {skills.map((skill, index) => {
             const IconComponent = skill.icon
+            const delayClass = index === 0 ? '' : index === 1 ? 'animate-delay-100' : index === 2 ? 'animate-delay-200' : 'animate-delay-300'
             return (
-              <div key={String(skill.name)} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
+              <div
+                key={String(skill.name)}
+                className={`p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3 ${skillsVisible ? `animate-slide-in-right ${delayClass}` : 'opacity-0'}`}
+              >
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]" />
                   <h3 className="font-medium text-sm sm:text-base">{skill.name}</h3>
                 </div>
                 <ul className="text-xs sm:text-sm text-muted-foreground space-y-1">
@@ -78,20 +89,24 @@ export default function WebProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="space-y-6 sm:space-y-8">
+      <section className="space-y-6 sm:space-y-8" ref={projectsRef}>
         <h2 className="text-xl sm:text-2xl font-semibold">{t('web.recentProjectsTitle')}</h2>
         <div className="space-y-6 sm:space-y-8">
-          {webProjects.map((project, index) => (
+          {webProjects.map((project, index) => {
+            const isEven = index % 2 === 0
+            const animationClass = isEven ? 'animate-slide-in-left' : 'animate-slide-in-right'
+            const delayClass = index > 0 ? 'animate-delay-200' : ''
+            return (
             <div key={String(project.title)} className={`border rounded-lg overflow-hidden hover:shadow-lg transition-all ${
               index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-            } lg:flex`}>
+            } lg:flex ${projectsVisible ? `${animationClass} ${delayClass}` : 'opacity-0'}`}>
               {/* Project Image */}
               <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-muted flex items-center justify-center overflow-hidden relative">
                 <ProjectImage
                   image={project.image}
                   title={String(project.title)}
                   fallbackIcon={Code2}
-                  className="h-12 w-12 sm:h-16 sm:w-16 text-muted-foreground"
+                  className="h-12 w-12 sm:h-16 sm:w-16 text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]"
                 />
               </div>
 
@@ -147,7 +162,8 @@ export default function WebProjectsPage() {
                 </div>
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
       </section>
     </div>

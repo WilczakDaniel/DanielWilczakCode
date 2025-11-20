@@ -3,9 +3,19 @@
 import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Calendar, MapPin, Code, Award, Users, Zap, Github, Linkedin, Mail, Heart, AppWindowMac, CheckCircle } from 'lucide-react'
+import { useCounterAnimation } from '@/hooks/useCounterAnimation'
+import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 
 export default function AboutPage() {
   const { t } = useTranslation()
+
+  // Counter animations for personal stats
+  const counter1 = useCounterAnimation(3, 1500)
+  const counter2 = useCounterAnimation(3, 1500)
+  const counter3 = useCounterAnimation(15, 1500)
+
+  // Viewport animation for skills section
+  const { isVisible: skillsVisible, elementRef: skillsRef } = useInViewAnimation(0.1)
 
   const timeline = [
     {
@@ -51,30 +61,34 @@ export default function AboutPage() {
     {
       category: t('about.skills.backend'),
       icon: Zap,
-      items: ['.NET Framework', 'C#', 'ASP.NET Core', 'Entity Framework', 'SQL Server', 'REST API', 'Dapper']
+      items: ['.NET Framework', 'C#', 'ASP.NET Core', 'Entity Framework', 'SQL Server', 'REST API', 'Dapper'],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     },
     {
       category: t('about.skills.frontend'),
       icon: Code,
-      items: ['React', 'Vue.js', 'Angular', 'TypeScript', 'JavaScript', 'Next.js', 'CSS3', 'Tailwind CSS']
+      items: ['React', 'Vue.js', 'Angular', 'TypeScript', 'JavaScript', 'Next.js', 'CSS3', 'Tailwind CSS'],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     },
     {
       category: t('about.skills.mobile'),
       icon: Users,
-      items: ['React Native', 'Expo', 'iOS', 'Android', 'Cross-platform', 'JavaScript', 'Mobile UI/UX']
+      items: ['React Native', 'Expo', 'iOS', 'Android', 'Cross-platform', 'JavaScript', 'Mobile UI/UX'],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     },
     {
       category: t('about.skills.tools'),
       icon: Award,
-      items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'Realm', 'Git', 'Visual Studio', 'Azure', 'Docker']
+      items: ['SQL Server', 'PostgreSQL', 'MongoDB', 'Realm', 'Git', 'Visual Studio', 'Azure', 'Docker'],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     }
   ]
 
 
   const personalStats = [
-    { icon: Award, metric: '3+', label: t('home.achievements.experience') },
-    { icon: CheckCircle, metric: '3+', label: t('home.achievements.companies') },
-    { icon: AppWindowMac, metric: '8+', label: t('about.stats.projects')}
+    { icon: Award, metric: '3+', label: t('home.achievements.experience'), iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]' },
+    { icon: CheckCircle, metric: '3+', label: t('home.achievements.companies'), iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]' },
+    { icon: AppWindowMac, metric: '8+', label: t('about.stats.projects'), iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]' }
   ]
 
   return (
@@ -132,15 +146,16 @@ export default function AboutPage() {
 
       {/* Personal Stats */}
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-        {personalStats.map((stat) => {
+        {personalStats.map((stat, index) => {
           const IconComponent = stat.icon
+          const counter = index === 0 ? counter1 : index === 1 ? counter2 : counter3
           return (
-            <div key={String(stat.label)} className="text-center space-y-2 sm:space-y-3">
-              <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
+            <div key={String(stat.label)} ref={counter.elementRef} className="text-center space-y-2 sm:space-y-3">
+              <div className={`inline-flex p-2 sm:p-3 rounded-full bg-muted ${stat.iconColor}`}>
                 <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div className="space-y-1">
-                <div className="text-xl sm:text-2xl font-bold">{stat.metric}</div>
+                <div className="text-xl sm:text-2xl font-bold">{counter.count}+</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </div>
             </div>
@@ -149,15 +164,19 @@ export default function AboutPage() {
       </section>
 
       {/* Skills */}
-      <section className="space-y-6 sm:space-y-8">
+      <section className="space-y-6 sm:space-y-8" ref={skillsRef}>
         <h2 className="text-2xl sm:text-3xl font-bold">{t('about.skillsTitle')}</h2>
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-          {skills.map((skillGroup) => {
+          {skills.map((skillGroup, index) => {
             const IconComponent = skillGroup.icon
+            const delayClass = index === 0 ? '' : index === 1 ? 'animate-delay-200' : index === 2 ? 'animate-delay-300' : 'animate-delay-400'
             return (
-              <div key={String(skillGroup.category)} className="p-4 sm:p-6 border rounded-lg space-y-3 sm:space-y-4">
+              <div
+                key={String(skillGroup.category)}
+                className={`p-4 sm:p-6 border rounded-lg space-y-3 sm:space-y-4 ${skillsVisible ? `animate-fade-in-down ${delayClass}` : 'opacity-0'}`}
+              >
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  <IconComponent className={`h-4 w-4 sm:h-5 sm:w-5 ${skillGroup.iconColor}`} />
                   <h3 className="font-semibold text-sm sm:text-base">{skillGroup.category}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">

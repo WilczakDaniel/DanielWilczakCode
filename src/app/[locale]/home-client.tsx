@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Code, Smartphone, Brain, Github, Linkedin, Mail, CheckCircle, TabletSmartphone, AppWindowMac, Award, Dock } from 'lucide-react'
+import { useCounterAnimation } from '@/hooks/useCounterAnimation'
+import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 
 interface HomePageProps {
   locale: string
@@ -13,31 +15,42 @@ interface HomePageProps {
 export default function HomePage({ locale }: HomePageProps) {
   const { t } = useTranslation()
 
+  // Counter animations for achievements
+  const counter1 = useCounterAnimation(3, 1500)
+  const counter2 = useCounterAnimation(3, 1500)
+  const counter3 = useCounterAnimation(15, 1500)
+
+  // Viewport animation for skills section
+  const { isVisible: skillsVisible, elementRef: skillsRef } = useInViewAnimation(0.1)
+
   const skills = [
     {
       icon: Code,
       title: t('home.skills.backend.title'),
       description: t('home.skills.backend.desc'),
-      technologies: [t('home.skills.backend.tech1'), t('home.skills.backend.tech2'), t('home.skills.backend.tech3'), t('home.skills.backend.tech4'), t('home.skills.backend.tech5')]
+      technologies: [t('home.skills.backend.tech1'), t('home.skills.backend.tech2'), t('home.skills.backend.tech3'), t('home.skills.backend.tech4'), t('home.skills.backend.tech5')],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     },
     {
       icon: Smartphone,
       title: t('home.skills.frontend.title'),
       description: t('home.skills.frontend.desc'),
-      technologies: [t('home.skills.frontend.tech1'), t('home.skills.frontend.tech2'), t('home.skills.frontend.tech3'), t('home.skills.frontend.tech4'), t('home.skills.frontend.tech5')]
+      technologies: [t('home.skills.frontend.tech1'), t('home.skills.frontend.tech2'), t('home.skills.frontend.tech3'), t('home.skills.frontend.tech4'), t('home.skills.frontend.tech5')],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     },
     {
       icon: Brain,
       title: t('home.skills.mobile.title'),
       description: t('home.skills.mobile.desc'),
-      technologies: [t('home.skills.mobile.tech1'), t('home.skills.mobile.tech2'), t('home.skills.mobile.tech3'), t('home.skills.mobile.tech4'), t('home.skills.mobile.tech5')]
+      technologies: [t('home.skills.mobile.tech1'), t('home.skills.mobile.tech2'), t('home.skills.mobile.tech3'), t('home.skills.mobile.tech4'), t('home.skills.mobile.tech5')],
+      iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]'
     }
   ]
 
   const achievements = [
-    { icon: Award, metric: '3+', label: t('home.achievements.experience') },
-    { icon: CheckCircle, metric: '3+', label: t('home.achievements.companies') },
-    { icon: AppWindowMac, metric: '15+', label: t('about.stats.projects')}
+    { icon: Award, metric: '3+', label: t('home.achievements.experience'), iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]' },
+    { icon: CheckCircle, metric: '3+', label: t('home.achievements.companies'), iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]' },
+    { icon: AppWindowMac, metric: '15+', label: t('about.stats.projects'), iconColor: 'text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]' }
   ]
 
   const jsonLd = {
@@ -161,15 +174,16 @@ export default function HomePage({ locale }: HomePageProps) {
         {/* Achievements */}
         <section>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {achievements.map((achievement) => {
+            {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon
+              const counter = index === 0 ? counter1 : index === 1 ? counter2 : counter3
               return (
-                <div key={String(achievement.label)} className="text-center space-y-2 sm:space-y-3">
-                  <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
+                <div key={String(achievement.label)} ref={counter.elementRef} className="text-center space-y-2 sm:space-y-3">
+                  <div className={`inline-flex p-2 sm:p-3 rounded-full bg-muted ${achievement.iconColor}`}>
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div className="space-y-1">
-                    <div className="text-2xl sm:text-3xl font-bold">{achievement.metric}</div>
+                    <div className="text-2xl sm:text-3xl font-bold">{counter.count}+</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">{achievement.label}</div>
                   </div>
                 </div>
@@ -179,7 +193,7 @@ export default function HomePage({ locale }: HomePageProps) {
         </section>
 
         {/* Skills Section */}
-        <section className="space-y-8 sm:space-y-12">
+        <section className="space-y-8 sm:space-y-12" ref={skillsRef}>
           <div className="text-center space-y-3 sm:space-y-4">
             <h2 className="text-2xl sm:text-3xl font-bold">{t('home.skills.title')}</h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -188,11 +202,15 @@ export default function HomePage({ locale }: HomePageProps) {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {skills.map((skill) => {
+            {skills.map((skill, index) => {
               const IconComponent = skill.icon
+              const delayClass = index === 0 ? '' : index === 1 ? 'animate-delay-200' : 'animate-delay-400'
               return (
-                <div key={String(skill.title)} className="p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4">
-                  <div className="inline-flex p-2 sm:p-3 rounded-lg bg-primary/10 text-primary">
+                <div
+                  key={String(skill.title)}
+                  className={`p-4 sm:p-6 border rounded-lg hover:shadow-lg transition-shadow space-y-3 sm:space-y-4 ${skillsVisible ? `animate-slide-in-right ${delayClass}` : 'opacity-0'}`}
+                >
+                  <div className={`inline-flex p-2 sm:p-3 rounded-lg bg-muted ${skill.iconColor}`}>
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-semibold">{skill.title}</h3>

@@ -4,9 +4,16 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { Button } from '@/components/ui/button'
 import { ProjectImage } from '@/components/ui/project-image'
 import { ExternalLink, Smartphone, Monitor, Zap, Shield } from 'lucide-react'
+import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 
 export default function MobileProjectsPage() {
   const { t } = useTranslation()
+
+  // Viewport animation for skills section
+  const { isVisible: skillsVisible, elementRef: skillsRef } = useInViewAnimation(0.1)
+
+  // Viewport animation for projects section
+  const { isVisible: projectsVisible, elementRef: projectsRef } = useInViewAnimation(0.1)
 
   const mobileProjects = [
     {
@@ -43,15 +50,19 @@ export default function MobileProjectsPage() {
       </div>
 
       {/* Skills Overview */}
-      <section className="space-y-4 sm:space-y-6">
+      <section className="space-y-4 sm:space-y-6" ref={skillsRef}>
         <h2 className="text-xl sm:text-2xl font-semibold">{t('mobile.skillsTitle')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {skills.map((skill) => {
+          {skills.map((skill, index) => {
             const IconComponent = skill.icon
+            const delayClass = index === 0 ? '' : index === 1 ? 'animate-delay-100' : index === 2 ? 'animate-delay-200' : 'animate-delay-300'
             return (
-              <div key={String(skill.name)} className="p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3">
+              <div
+                key={String(skill.name)}
+                className={`p-3 sm:p-4 border rounded-lg space-y-2 sm:space-y-3 ${skillsVisible ? `animate-slide-in-right ${delayClass}` : 'opacity-0'}`}
+              >
                 <div className="flex items-center gap-3">
-                  <IconComponent className="h-5 w-5 text-primary" />
+                  <IconComponent className="h-5 w-5 text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]" />
                   <h3 className="font-medium">{skill.name}</h3>
                 </div>
                 <ul className="text-sm text-muted-foreground space-y-1">
@@ -69,20 +80,23 @@ export default function MobileProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="space-y-8">
+      <section className="space-y-8" ref={projectsRef}>
         <h2 className="text-2xl font-semibold">{t('mobile.applicationsTitle')}</h2>
         <div className="space-y-8">
-          {mobileProjects.map((project, index) => (
+          {mobileProjects.map((project, index) => {
+            const isEven = index % 2 === 0
+            const animationClass = isEven ? 'animate-slide-in-left' : 'animate-slide-in-right'
+            return (
             <div key={String(project.title)} className={`border rounded-lg overflow-hidden hover:shadow-lg transition-all ${
               index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-            } lg:flex`}>
+            } lg:flex ${projectsVisible ? animationClass : 'opacity-0'}`}>
               {/* Project Image */}
               <div className="lg:w-1/2 aspect-video lg:aspect-auto bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 flex items-center justify-center overflow-hidden relative">
                 <ProjectImage
                   image={project.image}
                   title={String(project.title)}
                   fallbackIcon={Smartphone}
-                  className="h-16 w-16 text-primary"
+                  className="h-16 w-16 text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]"
                 />
               </div>
 
@@ -149,7 +163,8 @@ export default function MobileProjectsPage() {
                 </div>
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
       </section>
     </div>

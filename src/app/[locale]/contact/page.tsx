@@ -35,7 +35,7 @@ export default function ContactPage() {
               const IconComponent = method.icon
               return (
                 <div key={String(method.title)} className="p-4 sm:p-6 border rounded-lg text-center space-y-3 sm:space-y-4 hover:shadow-lg transition-shadow">
-                  <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
+                  <div className="inline-flex p-2 sm:p-3 rounded-full bg-muted text-[rgb(254,116,0)] dark:text-[rgb(124,208,248)]">
                     <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div className="space-y-2">
