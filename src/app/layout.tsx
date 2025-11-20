@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     description: "Passionate Fullstack .NET Developer with 3 years of experience building scalable web and mobile applications. Specializing in .NET, React, Next.js, TypeScript, and modern cloud technologies.",
     images: [
       {
-        url: "/logo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Daniel Wilczak Code - Fullstack .NET Developer",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     description: "Passionate Fullstack .NET Developer with 3 years of experience. Building scalable web and mobile applications with .NET, React, and modern technologies.",
     creator: "@danielwilczak",
     images: {
-      url: "/logo.png",
+      url: "/og-image.png",
       alt: "Daniel Wilczak Code - Fullstack .NET Developer",
     },
   },
